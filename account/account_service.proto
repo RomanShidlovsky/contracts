@@ -9,13 +9,13 @@ import "account_model.proto";
 import "pagination/pagination.proto"; 
 
 service Account {
-    rpc CreateUser(CreateUserRequest) returns (google.protobuf.Empty) {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
         option (google.api.http) = {
             post: "account/api/v1/create_user",
             body: "*"
         };
     }
-    rpc GetUser(GetUserRequest) returns (GetUsersResponse) {
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {
         option (google.api.http) = {
             get: "account/api/v1/users/{user_id}"
         };
@@ -37,8 +37,16 @@ message CreateUserRequest {
     CreateUser user = 1;
 }
 
+message CreateUserResponse {
+    User user = 1;
+}
+
 message GetUserRequest {
     uint64 user_id = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
 }
 
 message GetUsersRequest {
