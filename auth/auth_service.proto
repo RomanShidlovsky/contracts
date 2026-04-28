@@ -16,7 +16,7 @@ service Auth {
 message RegisterRequest {
     uint64 id = 1;
     string login = 2;
-    string own_nubmer = 3;
+    string own_number = 3;
     string password = 4;
 }
 

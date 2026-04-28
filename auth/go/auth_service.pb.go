@@ -26,7 +26,7 @@ type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Login         string                 `protobuf:"bytes,2,opt,name=login,proto3" json:"login,omitempty"`
-	OwnNubmer     string                 `protobuf:"bytes,3,opt,name=own_nubmer,json=ownNubmer,proto3" json:"own_nubmer,omitempty"`
+	OwnNumber     string                 `protobuf:"bytes,3,opt,name=own_number,json=ownNumber,proto3" json:"own_number,omitempty"`
 	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -76,9 +76,9 @@ func (x *RegisterRequest) GetLogin() string {
 	return ""
 }
 
-func (x *RegisterRequest) GetOwnNubmer() string {
+func (x *RegisterRequest) GetOwnNumber() string {
 	if x != nil {
-		return x.OwnNubmer
+		return x.OwnNumber
 	}
 	return ""
 }
@@ -467,7 +467,7 @@ const file_auth_service_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
 	"\n" +
-	"own_nubmer\x18\x03 \x01(\tR\townNubmer\x12\x1a\n" +
+	"own_number\x18\x03 \x01(\tR\townNumber\x12\x1a\n" +
 	"\bpassword\x18\x04 \x01(\tR\bpassword\"Y\n" +
 	"\fLoginRequest\x12-\n" +
 	"\x13login_or_own_number\x18\x01 \x01(\tR\x10loginOrOwnNumber\x12\x1a\n" +
