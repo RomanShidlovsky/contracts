@@ -406,28 +406,27 @@ func (x *ValidateResponse) GetUserId() uint64 {
 	return 0
 }
 
-type TokenPair struct {
+type DeleteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TokenPair) Reset() {
-	*x = TokenPair{}
+func (x *DeleteRequest) Reset() {
+	*x = DeleteRequest{}
 	mi := &file_auth_service_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TokenPair) String() string {
+func (x *DeleteRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TokenPair) ProtoMessage() {}
+func (*DeleteRequest) ProtoMessage() {}
 
-func (x *TokenPair) ProtoReflect() protoreflect.Message {
+func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_auth_service_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -439,30 +438,23 @@ func (x *TokenPair) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TokenPair.ProtoReflect.Descriptor instead.
-func (*TokenPair) Descriptor() ([]byte, []int) {
+// Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRequest) Descriptor() ([]byte, []int) {
 	return file_auth_service_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *TokenPair) GetAccessToken() string {
+func (x *DeleteRequest) GetId() uint64 {
 	if x != nil {
-		return x.AccessToken
+		return x.Id
 	}
-	return ""
-}
-
-func (x *TokenPair) GetRefreshToken() string {
-	if x != nil {
-		return x.RefreshToken
-	}
-	return ""
+	return 0
 }
 
 var File_auth_service_proto protoreflect.FileDescriptor
 
 const file_auth_service_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth_service.proto\x12\x04auth\x1a\x1bgoogle/protobuf/empty.proto\"r\n" +
+	"\x12auth_service.proto\x12\x04auth\x1a\x1bgoogle/protobuf/empty.proto\x1a\x10auth_model.proto\"r\n" +
 	"\x0fRegisterRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x1d\n" +
@@ -485,16 +477,17 @@ const file_auth_service_proto_rawDesc = "" +
 	"\x0fValidateRequest\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"+\n" +
 	"\x10ValidateResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\"S\n" +
-	"\tTokenPair\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken2\x9d\x02\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"\x1f\n" +
+	"\rDeleteRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id2\xd8\x02\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.google.protobuf.Empty\x120\n" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
 	"\aRefresh\x12\x14.auth.RefreshRequest\x1a\x15.auth.RefreshResponse\x129\n" +
 	"\bValidate\x12\x15.auth.ValidateRequest\x1a\x16.auth.ValidateResponse\x125\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x16.google.protobuf.EmptyB3Z1github.com/RomanShidlovsky/contracts/auth/go;authb\x06proto3"
+	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x16.google.protobuf.Empty\x129\n" +
+	"\n" +
+	"DeleteUser\x12\x13.auth.DeleteRequest\x1a\x16.google.protobuf.EmptyB3Z1github.com/RomanShidlovsky/contracts/auth/go;authb\x06proto3"
 
 var (
 	file_auth_service_proto_rawDescOnce sync.Once
@@ -518,27 +511,30 @@ var file_auth_service_proto_goTypes = []any{
 	(*LogoutRequest)(nil),    // 5: auth.LogoutRequest
 	(*ValidateRequest)(nil),  // 6: auth.ValidateRequest
 	(*ValidateResponse)(nil), // 7: auth.ValidateResponse
-	(*TokenPair)(nil),        // 8: auth.TokenPair
-	(*emptypb.Empty)(nil),    // 9: google.protobuf.Empty
+	(*DeleteRequest)(nil),    // 8: auth.DeleteRequest
+	(*TokenPair)(nil),        // 9: auth.TokenPair
+	(*emptypb.Empty)(nil),    // 10: google.protobuf.Empty
 }
 var file_auth_service_proto_depIdxs = []int32{
-	8, // 0: auth.LoginResponse.token_pair:type_name -> auth.TokenPair
-	8, // 1: auth.RefreshResponse.token_pair:type_name -> auth.TokenPair
-	0, // 2: auth.Auth.Register:input_type -> auth.RegisterRequest
-	1, // 3: auth.Auth.Login:input_type -> auth.LoginRequest
-	3, // 4: auth.Auth.Refresh:input_type -> auth.RefreshRequest
-	6, // 5: auth.Auth.Validate:input_type -> auth.ValidateRequest
-	5, // 6: auth.Auth.Logout:input_type -> auth.LogoutRequest
-	9, // 7: auth.Auth.Register:output_type -> google.protobuf.Empty
-	2, // 8: auth.Auth.Login:output_type -> auth.LoginResponse
-	4, // 9: auth.Auth.Refresh:output_type -> auth.RefreshResponse
-	7, // 10: auth.Auth.Validate:output_type -> auth.ValidateResponse
-	9, // 11: auth.Auth.Logout:output_type -> google.protobuf.Empty
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	9,  // 0: auth.LoginResponse.token_pair:type_name -> auth.TokenPair
+	9,  // 1: auth.RefreshResponse.token_pair:type_name -> auth.TokenPair
+	0,  // 2: auth.Auth.Register:input_type -> auth.RegisterRequest
+	1,  // 3: auth.Auth.Login:input_type -> auth.LoginRequest
+	3,  // 4: auth.Auth.Refresh:input_type -> auth.RefreshRequest
+	6,  // 5: auth.Auth.Validate:input_type -> auth.ValidateRequest
+	5,  // 6: auth.Auth.Logout:input_type -> auth.LogoutRequest
+	8,  // 7: auth.Auth.DeleteUser:input_type -> auth.DeleteRequest
+	10, // 8: auth.Auth.Register:output_type -> google.protobuf.Empty
+	2,  // 9: auth.Auth.Login:output_type -> auth.LoginResponse
+	4,  // 10: auth.Auth.Refresh:output_type -> auth.RefreshResponse
+	7,  // 11: auth.Auth.Validate:output_type -> auth.ValidateResponse
+	10, // 12: auth.Auth.Logout:output_type -> google.protobuf.Empty
+	10, // 13: auth.Auth.DeleteUser:output_type -> google.protobuf.Empty
+	8,  // [8:14] is the sub-list for method output_type
+	2,  // [2:8] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_auth_service_proto_init() }
@@ -546,6 +542,7 @@ func file_auth_service_proto_init() {
 	if File_auth_service_proto != nil {
 		return
 	}
+	file_auth_model_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

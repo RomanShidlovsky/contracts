@@ -4,6 +4,7 @@ package auth;
 option go_package = "github.com/RomanShidlovsky/contracts/auth/go;auth";
 
 import "google/protobuf/empty.proto";
+import "auth_model.proto";
 
 service Auth {
     rpc Register(RegisterRequest) returns (google.protobuf.Empty);
@@ -11,6 +12,7 @@ service Auth {
     rpc Refresh(RefreshRequest) returns (RefreshResponse);
     rpc Validate(ValidateRequest) returns (ValidateResponse);
     rpc Logout(LogoutRequest) returns (google.protobuf.Empty);
+    rpc DeleteUser(DeleteRequest) returns (google.protobuf.Empty);
 }
 
 message RegisterRequest {
@@ -49,7 +51,6 @@ message ValidateResponse {
     uint64 user_id = 1;
 }
 
-message TokenPair {
-    string access_token = 1;
-    string refresh_token = 2;
+message DeleteRequest {
+    uint64 id = 1;
 }

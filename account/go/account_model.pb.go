@@ -126,6 +126,7 @@ type User struct {
 	Age           uint32                 `protobuf:"varint,8,opt,name=age,proto3" json:"age,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	IsDeleted     bool                   `protobuf:"varint,11,opt,name=is_deleted,json=isDeleted,proto3" json:"is_deleted,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -230,6 +231,13 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *User) GetIsDeleted() bool {
+	if x != nil {
+		return x.IsDeleted
+	}
+	return false
+}
+
 var File_account_model_proto protoreflect.FileDescriptor
 
 const file_account_model_proto_rawDesc = "" +
@@ -245,7 +253,7 @@ const file_account_model_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\x12\x14\n" +
 	"\x05email\x18\x06 \x01(\tR\x05email\x12\x10\n" +
-	"\x03age\x18\a \x01(\rR\x03age\"\xbd\x02\n" +
+	"\x03age\x18\a \x01(\rR\x03age\"\xdc\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x14\n" +
@@ -261,7 +269,9 @@ const file_account_model_proto_rawDesc = "" +
 	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB9Z7github.com/RomanShidlovsky/contracts/account/go;accountb\x06proto3"
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1d\n" +
+	"\n" +
+	"is_deleted\x18\v \x01(\bR\tisDeletedB9Z7github.com/RomanShidlovsky/contracts/account/go;accountb\x06proto3"
 
 var (
 	file_account_model_proto_rawDescOnce sync.Once

@@ -8,7 +8,6 @@ package account
 
 import (
 	_go "github.com/RomanShidlovsky/contracts/pagination/go"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -396,7 +395,7 @@ var File_account_service_proto protoreflect.FileDescriptor
 
 const file_account_service_proto_rawDesc = "" +
 	"\n" +
-	"\x15account_service.proto\x12\aaccount\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x13account_model.proto\x1a\x1bpagination/pagination.proto\"<\n" +
+	"\x15account_service.proto\x12\aaccount\x1a\x1bgoogle/protobuf/empty.proto\x1a\x13account_model.proto\x1a\x1bpagination/pagination.proto\"<\n" +
 	"\x11CreateUserRequest\x12'\n" +
 	"\x04user\x18\x01 \x01(\v2\x13.account.CreateUserR\x04user\"7\n" +
 	"\x12CreateUserResponse\x12!\n" +
@@ -418,15 +417,16 @@ const file_account_service_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\"O\n" +
 	"\x11UpdateUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12!\n" +
-	"\x04user\x18\x02 \x01(\v2\r.account.UserR\x04user2\xb4\x03\n" +
-	"\aAccount\x12l\n" +
+	"\x04user\x18\x02 \x01(\v2\r.account.UserR\x04user2\xd3\x02\n" +
+	"\aAccount\x12E\n" +
 	"\n" +
-	"CreateUser\x12\x1a.account.CreateUserRequest\x1a\x1b.account.CreateUserResponse\"%\x82\xd3\xe4\x93\x02\x1f:\x01*\"\x1aaccount/api/v1/create_user\x12d\n" +
-	"\aGetUser\x12\x17.account.GetUserRequest\x1a\x18.account.GetUserResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1eaccount/api/v1/users/{user_id}\x12h\n" +
+	"CreateUser\x12\x1a.account.CreateUserRequest\x1a\x1b.account.CreateUserResponse\x12<\n" +
+	"\aGetUser\x12\x17.account.GetUserRequest\x1a\x18.account.GetUserResponse\x12?\n" +
+	"\bGetUsers\x12\x18.account.GetUsersRequest\x1a\x19.account.GetUsersResponse\x12@\n" +
 	"\n" +
-	"DeleteUser\x12\x1a.account.DeleteUserRequest\x1a\x16.google.protobuf.Empty\"&\x82\xd3\xe4\x93\x02 *\x1eaccount/api/v1/users/{user_id}\x12k\n" +
+	"DeleteUser\x12\x1a.account.DeleteUserRequest\x1a\x16.google.protobuf.Empty\x12@\n" +
 	"\n" +
-	"UpdateUser\x12\x1a.account.UpdateUserRequest\x1a\x16.google.protobuf.Empty\")\x82\xd3\xe4\x93\x02#:\x01*\x1a\x1eaccount/api/v1/users/{user_id}B9Z7github.com/RomanShidlovsky/contracts/account/go;accountb\x06proto3"
+	"UpdateUser\x12\x1a.account.UpdateUserRequest\x1a\x16.google.protobuf.EmptyB9Z7github.com/RomanShidlovsky/contracts/account/go;accountb\x06proto3"
 
 var (
 	file_account_service_proto_rawDescOnce sync.Once
@@ -465,14 +465,16 @@ var file_account_service_proto_depIdxs = []int32{
 	9,  // 6: account.UpdateUserRequest.user:type_name -> account.User
 	0,  // 7: account.Account.CreateUser:input_type -> account.CreateUserRequest
 	2,  // 8: account.Account.GetUser:input_type -> account.GetUserRequest
-	6,  // 9: account.Account.DeleteUser:input_type -> account.DeleteUserRequest
-	7,  // 10: account.Account.UpdateUser:input_type -> account.UpdateUserRequest
-	1,  // 11: account.Account.CreateUser:output_type -> account.CreateUserResponse
-	3,  // 12: account.Account.GetUser:output_type -> account.GetUserResponse
-	11, // 13: account.Account.DeleteUser:output_type -> google.protobuf.Empty
-	11, // 14: account.Account.UpdateUser:output_type -> google.protobuf.Empty
-	11, // [11:15] is the sub-list for method output_type
-	7,  // [7:11] is the sub-list for method input_type
+	4,  // 9: account.Account.GetUsers:input_type -> account.GetUsersRequest
+	6,  // 10: account.Account.DeleteUser:input_type -> account.DeleteUserRequest
+	7,  // 11: account.Account.UpdateUser:input_type -> account.UpdateUserRequest
+	1,  // 12: account.Account.CreateUser:output_type -> account.CreateUserResponse
+	3,  // 13: account.Account.GetUser:output_type -> account.GetUserResponse
+	5,  // 14: account.Account.GetUsers:output_type -> account.GetUsersResponse
+	11, // 15: account.Account.DeleteUser:output_type -> google.protobuf.Empty
+	11, // 16: account.Account.UpdateUser:output_type -> google.protobuf.Empty
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
 	7,  // [7:7] is the sub-list for extension extendee
 	0,  // [0:7] is the sub-list for field type_name

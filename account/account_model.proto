@@ -26,4 +26,5 @@ message User {
     uint32 age = 8;
     google.protobuf.Timestamp created_at = 9;
     google.protobuf.Timestamp updated_at = 10;
+    bool is_deleted = 11;
 }
