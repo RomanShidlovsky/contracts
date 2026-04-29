@@ -122,7 +122,7 @@ type User struct {
 	FirstName     string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	LastName      string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	MiddleName    string                 `protobuf:"bytes,6,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	Email         string                 `protobuf:"bytes,7,opt,name=email,proto3" json:"email,omitempty"`
+	OwnNumber     string                 `protobuf:"bytes,7,opt,name=own_number,json=ownNumber,proto3" json:"own_number,omitempty"`
 	Age           uint32                 `protobuf:"varint,8,opt,name=age,proto3" json:"age,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -203,9 +203,9 @@ func (x *User) GetMiddleName() string {
 	return ""
 }
 
-func (x *User) GetEmail() string {
+func (x *User) GetOwnNumber() string {
 	if x != nil {
-		return x.Email
+		return x.OwnNumber
 	}
 	return ""
 }
@@ -253,7 +253,7 @@ const file_account_model_proto_rawDesc = "" +
 	"\vmiddle_name\x18\x05 \x01(\tR\n" +
 	"middleName\x12\x14\n" +
 	"\x05email\x18\x06 \x01(\tR\x05email\x12\x10\n" +
-	"\x03age\x18\a \x01(\rR\x03age\"\xdc\x02\n" +
+	"\x03age\x18\a \x01(\rR\x03age\"\xe5\x02\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x14\n" +
 	"\x05login\x18\x02 \x01(\tR\x05login\x12\x14\n" +
@@ -262,8 +262,9 @@ const file_account_model_proto_rawDesc = "" +
 	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\x1f\n" +
 	"\vmiddle_name\x18\x06 \x01(\tR\n" +
-	"middleName\x12\x14\n" +
-	"\x05email\x18\a \x01(\tR\x05email\x12\x10\n" +
+	"middleName\x12\x1d\n" +
+	"\n" +
+	"own_number\x18\a \x01(\tR\townNumber\x12\x10\n" +
 	"\x03age\x18\b \x01(\rR\x03age\x129\n" +
 	"\n" +
 	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
