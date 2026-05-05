@@ -12,7 +12,8 @@ message CreateUser {
     string last_name = 4;
     string middle_name = 5;
     string own_number = 6;
-    uint32 age = 7; 
+    uint32 age = 7;
+    float balance = 8; 
 }
 
 message User {
@@ -26,5 +27,6 @@ message User {
     uint32 age = 8;
     google.protobuf.Timestamp created_at = 9;
     google.protobuf.Timestamp updated_at = 10;
-    bool is_deleted = 11;
+    float balance = 11;
+    bool is_deleted = 12;
 }

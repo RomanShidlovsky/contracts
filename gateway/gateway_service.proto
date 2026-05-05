@@ -3,11 +3,13 @@ syntax = "proto3";
 package gateway;
 option go_package = "github.com/RomanShidlovsky/contracts/gateway/go;gateway";
 
+import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "pagination/pagination.proto";
 import "account/account_model.proto";
 import "auth/auth_model.proto";
+import "transaction/transaction_model.proto";
 
 service Gateway {
     // Аутентификация и авторизация 
@@ -96,7 +98,35 @@ service Gateway {
         option (google.api.http) = {
             delete: "/api/v1/users/me"
         };
-    }    
+    }
+    
+    // Транзакции
+    rpc Deposit(DepositRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/transactions/deposit",
+            body: "*"
+        };
+    }
+    
+    rpc Withdraw(WithdrawRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/transactions/withdraw",
+            body: "*"
+        };
+    }
+    
+    rpc Transfer(TransferRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/transactions/transfer",
+            body: "*"
+        };
+    }
+    
+    rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse) {
+        option (google.api.http) = {
+            get: "/api/v1/transactions"
+        };
+    }
 }
 
 // Запросы для аутентификации
@@ -178,4 +208,34 @@ message UpdateCurrentUserRequest {
 
 message DeleteUserRequest {
     uint64 user_id = 1;
+}
+
+// Запросы для транзакций
+message DepositRequest {
+    uint64 user_id = 1;
+    uint64 amount = 2;
+}
+
+message WithdrawRequest {
+    uint64 user_id = 1;
+    uint64 amount = 2;
+}
+
+message TransferRequest {
+    uint64 user_id = 1;
+    uint64 amount = 2;
+    uint64 recipient = 3;
+}
+
+message GetTransactionsRequest {
+    optional uint64 user_id = 1;
+    optional string type = 2;
+    optional string status = 3;
+    optional google.protobuf.Timestamp date_from = 4; // фильтр по дате от
+    optional google.protobuf.Timestamp date_to = 5;   // фильтр по дате до
+    optional pagination.Pagination pagination = 6;
+}
+
+message GetTransactionsResponse {
+    repeated transaction.TransactionDetails transactions = 1;
 }
